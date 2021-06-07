@@ -1,0 +1,61 @@
+Colección “Archivos” {
+    
+    fecha de grabación
+ciudad 
+duración
+formato
+ubicación {
+        Latitud 
+longitud
+Exterior_Interior
+}
+segmentos : [
+{
+ID
+formato
+duración
+inicio 
+fin 
+ }
+                 ]
+    rut propietario 
+}
+
+
+Colección Usuario{
+            Nombre
+Apellido
+Rut
+}
+
+
+Colección segmento{
+            ID
+            formato
+            duración 
+            inicio 
+            fin
+            tipo de fuente : [
+                        { 
+                            nombre 
+                            descripción
+                            id analizador
+                         }
+
+                         ]
+}
+
+
+Colección “Analizar automáticamente” { 
+                        ID _ segmento
+                        nombre_fuente
+                        porcentaje
+}
+
+Colección “Analizar Humano ” { 
+                        ID _ segmento
+                        nombre_fuente
+                        
+}
+
+                
