@@ -58,9 +58,19 @@ def Arregar_Segmento_audio(segmento, listaSegmentos, nombre_fuentes,descripcion,
         ]
     })
 
+def analizar_automaticamente(seg, ID_seg, nombre_fuente, porcentaje):
+    seg.inset_one({
+        "ID segmento" : ID_seg,
+        "Nombre fuente " : nombre_fuente, 
+        "porcentaje " : porcentaje
 
+    })
 
-
+def analizar_automaticamente(seg, ID_seg, nombre_fuente):
+    seg.inset_one({
+        "ID segmento" : ID_seg,
+        "Nombre fuente " : nombre_fuente, 
+    })
 
 
 
