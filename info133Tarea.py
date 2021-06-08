@@ -35,7 +35,9 @@ def agregar_Archivos(archivos,fechaGrabacion, cuidad, duracion,formato, lista_ub
         "rut_propietario" : rut             
     })
 
-def agregar_Persona(personas,nombreP,apellidoP,rutP):
+def agregar_Persona(personas,nombreP,apellidoP,rutP,):
+
+
     personas.insert_one({
         "Nombre" : nombreP,
         "Apellido" :apellidoP,
@@ -80,6 +82,26 @@ def eliminarData():
     client.drop_database("proyecto_Fusa")
     
 
+def buscarPersona(data,rut,estado):
+
+
+    doc = data.find_one({
+        "Rut" : rut
+    })
+    print()
+    if estado == 1:
+
+        try:
+
+            print("el Usuario Buscado es : ")
+            print("Nombre : ",doc["Nombre"])
+            print("Apellido : ", doc["Apellido"])
+        except: 
+            print("ocurrio un error....")
+    if estado == 2: 
+        return doc["Nombre"]
+    print()
+
 
 
 
@@ -94,11 +116,12 @@ if __name__ == "__main__":
 
     while True: 
         print("1 - Ingresa un usuario ")
-        print("2 - Agregar Archivo de audio  ")
-        print("3 - Analizar Automaticamente ")
-        print("4 - Analizar Manualmente    ")
-        print("5 - eliminar la base de datos ")
-        print("6 - salir ")
+        print("2 - Buscar  un usuario ")
+        print("3 - Agregar Archivo de audio  ")
+        print("4 - Analizar Automaticamente ")
+        print("5 - Analizar Manualmente    ")
+        print("6 - eliminar la base de datos ")
+        print("7 - salir ")
         ele_menu = int(input(" : "))
 
         if ele_menu == 1:
@@ -109,28 +132,47 @@ if __name__ == "__main__":
             print("el usuario ", nom.upper() , "fue agregado a la base de datos exitosamente ")
             time.sleep(2)
             os.system("clear")
-        if ele_menu == 2: 
+        if ele_menu ==2:
+            
+            rut = input("Ingresa en rut de la persona que quieras buscar : ")
+            buscarPersona(personas,rut,1)
+            
+            q = input("presione ENTER para volver al menu principal")
             os.system("clear")
-        if ele_menu == 3:
+
+        
+        if ele_menu == 3: 
+            rut= input("Ingrese el rut del usuario : ")
             os.system("clear")
-        if ele_menu == 4 :
+            nombre = buscarPersona(personas,rut,2)
+            print("Hola {} ".format(nombre))
+            print("Ingresa el nombre de tu archivo de audio :")
+            archivo =input( ": " )
+
+
+
+
+            os.system("clear")
+        if ele_menu == 4:
+            os.system("clear")
+        if ele_menu == 5 :
             os.system("clear") 
 
 
-        if ele_menu == 5 : 
+        if ele_menu == 6 : 
             eliminarData()
             print("base de datos eliminada")
             time.sleep(2)
             os.system("clear")
            
         
-        if ele_menu == 6 :
+        if ele_menu == 7 :
             
             os.system("clear")
             print("Adios.....  :)") 
             break
         
-        os.system("clear")
+        ##os.system("clear")
 
         
 
