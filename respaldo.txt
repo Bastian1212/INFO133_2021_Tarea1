@@ -1,0 +1,26 @@
+def agregar_Archivos(archivos,fechaGrabacion, cuidad, duracion,formato, lista_ubicacion, lista_segmentos, rut):
+    archivos.insert_one({
+        "fecha de grabacion" : fechaGrabacion,
+        "cuidad" : cuidad,
+        "duracion" : duracion,
+        "formato" : formato,
+        "ubicacion" : {
+
+            "Latitud" : lista_ubicacion[0],
+            "Longitud" :  lista_ubicacion[1],        
+            "Exterior_Interior" : lista_ubicacion[2]
+        },
+        "segmentos" : [
+            {
+                "ID" : lista_segmentos[0],
+                "formato" : lista_segmentos[1],
+                "duracion " : lista_segmentos[2],
+                "inicio" : lista_segmentos[3],
+                "fin" : lista_segmentos[4]
+                
+
+
+            }
+        ],
+        "rut_propietario" : rut             
+    })
