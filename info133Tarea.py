@@ -1,4 +1,5 @@
 from re import A
+from Cython.Shadow import NULL
 from pymongo import MongoClient
 import os
 import time
@@ -100,13 +101,18 @@ def buscarPersona(data,rut,estado):
             print("Apellido : ", doc["Apellido"])
             time.sleep(2)
             informacion_archivo_audio(archivos, rut)
-
+            
 
         except: 
             print("ocurrio un error....")
-    if estado == 2: 
-        return doc["Nombre"]
-    print()
+    
+    if estado == 2:
+        try:
+            return doc["Nombre"]
+        except:
+            return "Error........"
+        
+    
 
 def informacion_archivo_audio(data, rut):
     
@@ -145,7 +151,7 @@ def informacion_archivo_audio(data, rut):
             pass 
 
     else: 
-        print("usuario no cuenta con registros de auido :( ")
+        print("usuario no cuenta con registros de audio :( ")
     
 
 
@@ -273,6 +279,8 @@ def menu():
         print("6 - eliminar la base de datos ")
         print("7 - mapa")
         print("8 - salir ")
+        print()
+        print("Escribe una opción del 1 al 8 ")
         ele_menu = int(input(" : "))
 
         if ele_menu == 1:
@@ -295,7 +303,7 @@ def menu():
         if ele_menu == 3: 
             rut= input("Ingrese el rut del usuario : ")
             os.system("clear")
-            nombre = buscarPersona(personas,rut,2)
+            nombre = buscarPersona(personas,rut.upper(),2)
             print("Hola {} ".format(nombre))
             print("Ingresa el nombre de tu archivo de audio ")
             nom_archivo =input( ": " )
@@ -345,6 +353,7 @@ def menu():
                 print(" 3- filtrar por fecha "  )
                 print(" 4 - filtrar por fecha y categoria")
                 print(" 5 - Ir al menu principal")
+                print("Escribe una opción del 1 al 5 ")
                 ele_menu = int(input(" : " ))
 
                 if ele_menu==1:
@@ -396,6 +405,8 @@ if __name__ == "__main__":
     personas = db["Usarios"]
     segmentos = db["segmentos"]
     menu()
+
+    
 
     
 

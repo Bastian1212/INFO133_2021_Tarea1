@@ -1,6 +1,8 @@
 Colección “Archivos” {
-    
-    fecha de grabación
+ 
+sonidoN
+AcodigoB   
+fecha de grabación
 ciudad 
 duración
 formato
@@ -9,16 +11,9 @@ ubicación {
 longitud
 Exterior_Interior
 }
-segmentos : [
-{
-ID
-formato
-duración
-inicio 
-fin 
- }
-                 ]
-    rut propietario 
+      
+    rut propietario
+    Categoria 
 }
 
 
